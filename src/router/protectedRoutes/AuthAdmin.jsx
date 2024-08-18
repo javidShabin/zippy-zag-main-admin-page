@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthAdmin = () => {
   const { isAdminExist } = useSelector((state) => state.admin);
-  console.log(isAdminExist)
+  console.log(isAdminExist);
   const navigate = useNavigate();
 
   if (!isAdminExist) {
-    navigate("/log-in")
+    navigate("/log-in");
   }
 
   return isAdminExist ? <Outlet /> : null;
