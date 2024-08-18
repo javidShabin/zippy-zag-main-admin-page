@@ -7,7 +7,6 @@ function App() {
   
   return (
     <>
-    <button onClick={notify}>Make me a toast</button>
       <RouterProvider router={router} />
       <Toaster />
     </>
