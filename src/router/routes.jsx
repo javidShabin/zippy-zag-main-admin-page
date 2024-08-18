@@ -3,6 +3,8 @@ import AdminLayout from "../layout/AdminLayout";
 import SignupPage from "../page/SignupPage";
 import LoginPage from "../page/LoginPage";
 import Dashbord from "../page/Dashbord";
+import AuthAdmin from "./protectedRoutes/AuthAdmin";
+import Restaurants from "../page/AuthAdmin/Restaurants";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,18 @@ export const router = createBrowserRouter([
       {
         path: "log-in",
         element: <LoginPage />
+      },
+
+      {
+        path: "admin",
+        element: <AuthAdmin />,
+
+        children: [
+          {
+            path: "restaurant-list",
+            element: <Restaurants />
+          }
+        ]
       }
     ],
   },
