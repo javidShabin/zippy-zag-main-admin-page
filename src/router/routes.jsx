@@ -5,6 +5,7 @@ import LoginPage from "../page/LoginPage";
 import Dashbord from "../page/Dashbord";
 import AuthAdmin from "./protectedRoutes/AuthAdmin";
 import Restaurants from "../page/AuthAdmin/Restaurants";
+import UsersList from "../page/AuthAdmin/UserList";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
           {
             path: "restaurant-list",
             element: <Restaurants />
+          },
+          {
+            path: "user-list",
+            element: <UsersList />
           }
         ]
       }
