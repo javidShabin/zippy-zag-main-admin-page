@@ -8,8 +8,8 @@ import {
   LogOut,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { axiosInstance } from "../../config/axiosInstance";
 import { useDispatch } from "react-redux";
+import { axiosInstance } from "../../config/axiosInstance";
 
 const AuthSidebar = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const AuthSidebar = () => {
       console.error("Logout Error:", error);
     }
   };
-  
+
   return (
     <div className="w-64 h-screen bg-gray-800 text-white flex flex-col sticky top-0">
       <div className="p-4 text-xl font-bold border-b border-gray-700">
