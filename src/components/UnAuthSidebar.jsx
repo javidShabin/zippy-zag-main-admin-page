@@ -8,10 +8,13 @@ const UnAuthSidebar = () => {
       <div className="p-4 text-xl font-bold">Zippyzag</div>
       <nav className="flex-1">
         <ul className="space-y-4 px-4">
-          <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded-md">
-            <LayoutDashboard className="w-5 h-5" />
-            <span>Dashboard</span>
-          </li>
+          {" "}
+          <Link to={"/"}>
+            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded-md">
+              <LayoutDashboard className="w-5 h-5" />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded-md">
             <List className="w-5 h-5" />
             <span>Restaurants</span>
@@ -24,16 +27,16 @@ const UnAuthSidebar = () => {
             <Package className="w-5 h-5" />
             <span>Orders</span>
           </li>
-          <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded-md">
-            <Link to="/sign-up" className="flex items-center space-x-3">
+          <Link to="/sign-up">
+            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 p-2 rounded-md">
               <Check className="w-5 h-5" />
               <span>Signup</span>
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default UnAuthSidebar
+export default UnAuthSidebar;
