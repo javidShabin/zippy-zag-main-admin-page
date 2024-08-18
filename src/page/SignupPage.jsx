@@ -58,7 +58,7 @@ export default function SignupPage() {
         <input
           className="mb-4 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Conform Password"
           {...register("conformPassword", { required: true })}
         />
 
