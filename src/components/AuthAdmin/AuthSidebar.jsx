@@ -53,10 +53,13 @@ const AuthSidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <li className="flex items-center space-x-3 cursor-pointer px-2 hover:bg-gray-700 rounded-md">
-            <Package className="w-5 h-5" />
-            <span>Orders</span>
-          </li>
+          <Link to={"/admin/create-restaurant"}>
+            <li className="flex items-center space-x-3 cursor-pointer px-2 hover:bg-gray-700 rounded-md">
+              <Package className="w-5 h-5" />
+              <span>Create restaurant</span>
+            </li>
+          </Link>
+
           <li
             onClick={logOut}
             className="flex items-center space-x-3 cursor-pointer px-2 hover:bg-gray-700 rounded-md"

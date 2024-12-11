@@ -6,6 +6,7 @@ import Dashbord from "../page/Dashbord";
 import AuthAdmin from "./protectedRoutes/AuthAdmin";
 import Restaurants from "../page/AuthAdmin/Restaurants";
 import UsersList from "../page/AuthAdmin/UserList";
+import CreateRestaurant from "../components/AuthAdmin/CreateRestaurant";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
           {
             path: "user-list",
             element: <UsersList />
+          },
+          {
+            path: "create-restaurant",
+            element: <CreateRestaurant />
           }
         ]
       }
