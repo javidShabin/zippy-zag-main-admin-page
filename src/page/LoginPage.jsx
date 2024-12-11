@@ -5,7 +5,7 @@ import { axiosInstance } from "../config/axiosInstance";
 import { useState } from "react";
 
 export default function LoginPage() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -20,7 +20,7 @@ export default function LoginPage() {
         url: "/admin/login",
         data,
       });
-      setLoading(false);
+      setLoading(true);
       toast.success("Login success");
       navigate("/");
     } catch (error) {
