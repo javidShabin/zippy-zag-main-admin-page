@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../config/axiosInstance";
 
 export default function LoginPage() {
-
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,12 +20,22 @@ export default function LoginPage() {
         data,
       });
       toast.success("Login success");
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.log(error);
       toast.error("Login faild");
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-dots loading-lg bg-orange-400"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center items-center h-[87vh] bg-gray-100">
@@ -63,7 +73,12 @@ export default function LoginPage() {
           <span className="text-red-500 mb-4">This field is required</span>
         )}
 
-        <p className="text-gray-500">New user? <Link to={'/sign-up'}><span className="text-orange-400">Signup</span></Link></p>
+        <p className="text-gray-500">
+          New user?{" "}
+          <Link to={"/sign-up"}>
+            <span className="text-orange-400">Signup</span>
+          </Link>
+        </p>
 
         <input
           className="bg-orange-400 text-white font-semibold py-3 px-6 rounded-lg hover:bg-orange-500 cursor-pointer w-[100px] transition duration-300 mt-2"
