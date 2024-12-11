@@ -20,13 +20,12 @@ export default function LoginPage() {
         url: "/admin/login",
         data,
       });
+      setLoading(false);
       toast.success("Login success");
       navigate("/");
     } catch (error) {
       console.log(error);
       toast.error("Login faild");
-    } finally {
-      setLoading(false);
     }
   };
 
