@@ -2,11 +2,9 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../config/axiosInstance";
-import { useDispatch } from "react-redux";
-import { saveAdmin } from "../redux/features/adminSlice";
 
 export default function LoginPage() {
-  const dispatch = useDispatch()
+
   const navigate = useNavigate()
   const {
     register,
@@ -21,7 +19,6 @@ export default function LoginPage() {
         url: "/admin/login",
         data,
       });
-      dispatch(saveAdmin())
       toast.success("Login success");
       navigate("/")
     } catch (error) {

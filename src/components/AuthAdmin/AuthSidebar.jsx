@@ -8,12 +8,10 @@ import {
   LogOut,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { axiosInstance } from "../../config/axiosInstance";
 
 const AuthSidebar = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const logOut = async () => {
     try {

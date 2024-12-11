@@ -10,6 +10,7 @@ const AdminLayout = () => {
   const { isAdminExist } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
   const checkAdmin = async () => {
     try {
       await axiosInstance({
@@ -20,11 +21,21 @@ const AdminLayout = () => {
     } catch (error) {
       dispatch(clearAdmin());
       console.log(error);
+    } finally {
+      setLoading(false); // Set loading to false after checking user
     }
   };
   useEffect(() => {
     checkAdmin();
   }, [location.pathname]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-dots loading-lg bg-orange-400"></span>
+      </div>
+    );
+  }
   return (
     <div className="flex h-screen">
       <div className="sticky top-0 w-64 bg-white shadow-lg">
