@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../config/axiosInstance";
 
 export default function SignupPage() {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -17,7 +18,7 @@ export default function SignupPage() {
         data,
       });
       toast.success("Create admin");
-      console.log(response);
+      navigate("/")
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
