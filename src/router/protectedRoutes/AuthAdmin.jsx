@@ -4,13 +4,12 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthAdmin = () => {
   const { isAdminExist } = useSelector((state) => state.admin);
+  console.log(isAdminExist)
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isAdminExist) {
-      navigate("/log-in");
-    }
-  }, [isAdminExist, navigate]);
+  if (!isAdminExist) {
+    navigate("/log-in")
+  }
 
   return isAdminExist ? <Outlet /> : null;
 };

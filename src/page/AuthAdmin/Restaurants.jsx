@@ -38,10 +38,8 @@ const Restaurants = () => {
   }
 
   return (
-    <main className="bg-white p-6 min-h-screen mt-16">
-      <div>
-      </div>
-      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+    <main className="bg-white p-4 min-[100vh]">
+      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-5">
       Restaurants <span className="text-orange-500">List</span>
       </h1>
 
@@ -49,7 +47,7 @@ const Restaurants = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {restData.map((restaurant) => (
             <div
-              className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
+              className="relative w-full h-[200px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
               style={{
                 backgroundImage: `url(${
                   restaurant.image || "/fallback-image.jpg"
