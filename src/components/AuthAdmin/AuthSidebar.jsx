@@ -54,7 +54,7 @@ const AuthSidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <Link>
+          <Link onClick={logOut}>
             <li className="flex items-center space-x-3 cursor-pointer px-2 py-2 hover:bg-gray-700 rounded-md">
             <LogOut className="w-5 h-5" />
             <span>Logout</span>
