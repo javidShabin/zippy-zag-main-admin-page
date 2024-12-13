@@ -7,6 +7,8 @@ import AuthAdmin from "./protectedRoutes/AuthAdmin";
 import Restaurants from "../page/AuthAdmin/Restaurants";
 import UsersList from "../page/AuthAdmin/UserList";
 import CreateRestaurant from "../components/AuthAdmin/CreateRestaurant";
+import ProfilePage from "../page/AuthAdmin/Profile";
+import EditProfile from "../page/AuthAdmin/ProfileEditePage";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ export const router = createBrowserRouter([
           {
             path: "create-restaurant",
             element: <CreateRestaurant />
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />
+          },
+          {
+            path: "edite-profile",
+            element: <EditProfile />
           }
         ]
       }
