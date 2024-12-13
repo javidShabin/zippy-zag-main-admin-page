@@ -26,7 +26,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="flex justify-center items-center h-[87vh] bg-gray-100">
+    <div className="flex justify-center items-center h-[87vh] bg-orange-50">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg flex flex-col"

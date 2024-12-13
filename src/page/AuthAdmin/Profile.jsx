@@ -28,7 +28,7 @@ const ProfilePage = () => {
   return (
     <main className="flex justify-around gap-5 mt-5">
   {/* Profile Section */}
-  <div className="flex justify-center items-center rounded-xl shadow-lg">
+  <div className="flex justify-center bg-orange-50 items-center rounded-xl shadow-lg">
     <div className="w-[500px] bg-white shadow-xl rounded-xl p-8 flex flex-col items-center">
       <div className="relative mb-6">
         <img

@@ -21,7 +21,7 @@ const UsersList = () => {
   }, []);
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
+    <div className="p-4 bg-orange-50 min-h-screen">
       <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
         Users List
       </h1>

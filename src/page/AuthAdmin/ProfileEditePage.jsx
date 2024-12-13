@@ -54,7 +54,7 @@ export default function EditProfile() {
     }
   };
   return (
-    <div className="flex justify-center items-center h-[87vh]">
+    <div className="flex bg-orange-50 justify-center items-center h-[87vh]">
       {userData && (
         <div className="flex flex-col items-center mb-6">
           <img

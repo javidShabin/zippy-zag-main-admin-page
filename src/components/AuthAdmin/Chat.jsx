@@ -77,21 +77,19 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-[70vh] flex flex-col items-center py-8 bg-gray-50">
+    <div className="min-h-[70vh] flex flex-col items-center py-8 bg-orange-50">
       {error && <p className="text-red-600 text-center mb-4">{error}</p>}
       <div className="bg-white shadow-xl rounded-lg w-full max-w-6xl mx-auto flex flex-col lg:flex-row overflow-hidden">
         {/* User List */}
-        <div className="w-full lg:w-1/3 p-6 bg-gray-100 rounded-t-lg lg:rounded-l-lg shadow-md">
-          <h2 className="text-2xl font-semibold mb-4 text-center text-blue-700">
-            Users
-          </h2>
+        <div className="w-full lg:w-1/3 p-6 bg-orange-100 rounded-t-lg lg:rounded-l-lg shadow-md">
+          <h2 className="text-2xl font-semibold mb-4 text-center text-orange-700">Users</h2>
           <ul className="overflow-y-auto h-72">
             {users.map((user) => (
               <li
                 key={user._id}
                 className={`p-3 mb-3 cursor-pointer rounded-lg transition duration-300 ease-in-out text-center transform hover:scale-105 ${
                   selectedUser && selectedUser._id === user._id
-                    ? "bg-blue-600 text-white"
+                    ? "bg-orange-600 text-white"
                     : "bg-gray-200 hover:bg-gray-300"
                 }`}
                 onClick={() => setSelectedUser(user)}
@@ -109,10 +107,8 @@ const Chat = () => {
 
         {/* Chat Box */}
         <div className="w-full lg:w-2/3 p-6 bg-white rounded-t-lg lg:rounded-r-lg shadow-md sm:ml-4 flex flex-col">
-          <h2 className="text-2xl font-semibold mb-6 text-center text-blue-700">
-            {selectedUser
-              ? `Chat with ${selectedUser.name}`
-              : "Select a user to chat"}
+          <h2 className="text-2xl font-semibold mb-6 text-center text-orange-700">
+            {selectedUser ? `Chat with ${selectedUser.name}` : "Select a user to chat"}
           </h2>
           {selectedUser && (
             <>
@@ -124,14 +120,12 @@ const Chat = () => {
                 {messages.map((msg, index) => (
                   <div
                     key={index}
-                    className={`mb-3 ${
-                      msg.sender === "admin" ? "text-right" : "text-left"
-                    }`}
+                    className={`mb-3 ${msg.sender === "admin" ? "text-right" : "text-left"}`}
                   >
                     <div
                       className={`inline-block p-3 rounded-lg transition duration-300 ${
                         msg.sender === "admin"
-                          ? "bg-blue-600 text-white"
+                          ? "bg-orange-600 text-white"
                           : "bg-gray-200 text-gray-700"
                       }`}
                     >
@@ -146,14 +140,14 @@ const Chat = () => {
               <div className="flex flex-col sm:flex-row">
                 <input
                   type="text"
-                  className="flex-1 border border-gray-300 p-3 rounded-lg mb-3 sm:mb-0 sm:mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                  className="flex-1 border border-gray-300 p-3 rounded-lg mb-3 sm:mb-0 sm:mr-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-700"
                   placeholder="Type a message..."
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && sendMessage()}
                 />
                 <button
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg w-full sm:w-auto transition duration-300 hover:bg-blue-700 flex items-center justify-center"
+                  className="bg-orange-600 text-white px-6 py-3 rounded-lg w-full sm:w-auto transition duration-300 hover:bg-orange-700 flex items-center justify-center"
                   onClick={sendMessage}
                 >
                   <Send className="mr-2" /> Send

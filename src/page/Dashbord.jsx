@@ -42,7 +42,7 @@ const Dashbord = () => {
 
   return (
     <>
-    <div className='mt-3 flex justify-center gap-10'>
+    <div className='mt-3 flex justify-center gap-10 bg-orange-50'>
       <div className='flex justify-center items-center w-[350px] h-[200px] bg-orange-400 shadow-lg rounded-lg'>
         <h3 className='text-[20px] font-semibold'>Restaurants</h3>
       <h1 className='text-[100px] font-extrabold'>{restaurantCount}</h1>
