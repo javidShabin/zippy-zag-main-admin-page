@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
 import { Trash2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Restaurants = () => {
   const [restData, setRestData] = useState([]);
@@ -61,6 +62,12 @@ const Restaurants = () => {
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-5">
         Restaurants <span className="text-orange-500">List</span>
       </h1>
+
+      <Link to={"/admin/create-restaurant"}>
+        <button className="bg-green-500 py-2 px-4 rounded-lg text-white font-bold shadow-xl mb-3 ">
+          Create Restaurant
+        </button>
+      </Link>
 
       {restData.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
