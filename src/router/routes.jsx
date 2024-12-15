@@ -2,13 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import AdminLayout from "../layout/AdminLayout";
 import SignupPage from "../page/SignupPage";
 import LoginPage from "../page/LoginPage";
-import Dashbord from "../page/Dashbord";
 import AuthAdmin from "./protectedRoutes/AuthAdmin";
 import Restaurants from "../page/AuthAdmin/Restaurants";
 import UsersList from "../page/AuthAdmin/UserList";
 import CreateRestaurant from "../components/AuthAdmin/CreateRestaurant";
 import ProfilePage from "../page/AuthAdmin/Profile";
 import EditProfile from "../page/AuthAdmin/ProfileEditePage";
+import SpecialComponent from "../layout/specialComponent";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Dashbord />
+        element: <SpecialComponent />
       },
       {
         path: "sign-up",
