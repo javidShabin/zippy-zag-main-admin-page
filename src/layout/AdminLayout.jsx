@@ -38,11 +38,15 @@ const AdminLayout = () => {
   }
   return (
     <div className="flex h-screen">
-      <div className="sticky top-0 w-64 bg-white shadow-lg">
-        {isAdminExist ? <AuthSidebar /> : <UnAuthSidebar />}
-      </div>
+      {isAdminExist ? (
+        <div className="sticky top-0 w-64 bg-white shadow-lg">
+          <AuthSidebar />
+        </div>
+      ) : (
+        ""
+      )}
       {/* Main Content Section */}
-      <div className="flex-1 bg-gray-100 p-4 overflow-y-auto">
+      <div className="flex-1 bg-gray-100 overflow-y-auto">
         <Outlet />
       </div>
     </div>
