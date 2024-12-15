@@ -28,7 +28,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex justify-center items-center h-[87vh] bg-orange-50">
+    <div className="flex justify-center items-center h-[100vh] bg-orange-50">
       <img src="" className="hidden sm:block" />
       <form
         onSubmit={handleSubmit(onSubmit)}
