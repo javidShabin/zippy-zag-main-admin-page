@@ -9,6 +9,7 @@ import CreateRestaurant from "../components/AuthAdmin/CreateRestaurant";
 import ProfilePage from "../page/AuthAdmin/Profile";
 import EditProfile from "../page/AuthAdmin/ProfileEditePage";
 import SpecialComponent from "../layout/specialComponent";
+import RequestDetails from "../page/AuthAdmin/RequestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <SpecialComponent />
+        element: <SpecialComponent />,
       },
       {
         path: "sign-up",
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "log-in",
-        element: <LoginPage />
+        element: <LoginPage />,
       },
 
       {
@@ -36,26 +37,30 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "restaurant-list",
-            element: <Restaurants />
+            element: <Restaurants />,
           },
           {
             path: "user-list",
-            element: <UsersList />
+            element: <UsersList />,
           },
           {
             path: "create-restaurant",
-            element: <CreateRestaurant />
+            element: <CreateRestaurant />,
           },
           {
             path: "profile",
-            element: <ProfilePage />
+            element: <ProfilePage />,
           },
           {
             path: "edite-profile",
-            element: <EditProfile />
-          }
-        ]
-      }
+            element: <EditProfile />,
+          },
+          {
+            path: "req-details/:requestId",
+            element: <RequestDetails />,
+          },
+        ],
+      },
     ],
   },
 ]);
