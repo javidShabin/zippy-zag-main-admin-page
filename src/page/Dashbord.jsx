@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { axiosInstance } from '../config/axiosInstance';
 import Chat from '../components/AuthAdmin/Chat';
+import RequestList from '../components/AuthAdmin/RequestList';
 
 const Dashbord = () => {
   const [userCount, setUserCount] = useState(0); 
@@ -56,6 +57,7 @@ const Dashbord = () => {
       <h1 className='text-[100px] font-extrabold'>{sellerCount}</h1>
       </div>
     </div>
+    <RequestList />
     <Chat />
     </>
   );
