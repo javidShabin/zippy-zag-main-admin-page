@@ -91,6 +91,7 @@ const Restaurants = () => {
                 <h2 className="text-lg font-semibold">{restaurant.name}</h2>
                 <p className="text-sm">{restaurant.location}</p>
                 <p className="text-xs mt-2">{restaurant.description}</p>
+                <p className="text-xs mt-2">{restaurant._id}</p>
               </div>
 
               {/* Remove Button */}
