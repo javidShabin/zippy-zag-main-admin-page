@@ -64,7 +64,7 @@ const RequestDetails = () => {
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-4 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">Request Details</h2>
       <div className="bg-white p-6 border border-gray-300 rounded-lg shadow-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,32 +121,29 @@ const RequestDetails = () => {
             Reject
           </button>
         </div>
-
-        {/* Form to send restaurantId */}
-        <div className="mt-8">
-          <h3 className="text-xl font-semibold text-gray-700">Send Restaurant ID</h3>
-          <form onSubmit={handleSubmit(onSubmit)} className="mt-6 flex space-x-4 bg-gray-100 p-6 rounded-lg shadow-md">
-            <div className="flex-1">
-              <label htmlFor="restaurantId" className="block text-sm font-medium text-gray-600">Restaurant ID</label>
-              <input
-                id="restaurantId"
-                type="text"
-                {...register('restaurantId', { required: 'Restaurant ID is required' })}
-                className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              {errors.restaurantId && <p className="text-red-500 text-sm">{errors.restaurantId.message}</p>}
-            </div>
-
-            <button
-              type="submit"
-              className="flex items-center justify-center px-4 py-2 bg-orange-500 text-white font-medium text-sm rounded-lg hover:bg-orange-600 focus:outline-none transition duration-200 transform hover:scale-105"
-            >
-              <Send size={18} className="mr-2" /> {/* Lucide send icon */}
-              Send
-            </button>
-          </form>
-        </div>
       </div>
+
+      {/* Form */}
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
+        <div className="flex justify-center items-center gap-4">
+          <input
+            placeholder="Enter restaurant ID"
+            id="restaurantId"
+            type="text"
+            {...register('restaurantId', { required: 'Restaurant ID is required' })}
+            className="w-full sm:w-[500px] py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          {errors.restaurantId && <p className="text-red-500 text-sm">{errors.restaurantId.message}</p>}
+
+          <button
+            type="submit"
+            className="flex items-center justify-center px-6 py-2 bg-orange-500 text-white font-medium text-sm rounded-lg hover:bg-orange-600 focus:outline-none transition duration-200 transform hover:scale-105"
+          >
+            <Send size={18} className="mr-2" /> {/* Lucide send icon */}
+            Send
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
