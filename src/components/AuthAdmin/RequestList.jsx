@@ -21,8 +21,8 @@ const RequestList = () => {
     <div className="p-2">
       <h2 className="text-2xl font-semibold mb-4 text-center">Request List</h2>
       <div className="overflow-y-auto flex justify-center">
-        <table className="w-[55rem] table-auto border-collapse border border-gray-300">
-          <thead className="bg-purple-600 text-white">
+        <table className="w-[60rem] table-auto border-collapse border border-gray-300">
+          <thead className="bg-[#0e072d] text-white">
             <tr>
               <th className="px-4 py-2 text-left font-medium">ID</th>
               <th className="px-4 py-2 text-left font-medium">Request Name</th>
