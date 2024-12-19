@@ -40,7 +40,7 @@ const RestaurantForm = () => {
         form.append("image", image);
       }
 
-      const response = await axiosInstance.post("/restaurant/create-restaurant", form, {
+      await axiosInstance.post("/restaurant/create-restaurant", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
