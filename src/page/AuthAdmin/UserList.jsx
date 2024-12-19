@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { axiosInstance } from "../config/axiosInstance";
 import filterData from "../components/filterData/FilterData"; // Ensure the correct path
 import toast from "react-hot-toast";
+import { axiosInstance } from "../../config/axiosInstance";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
