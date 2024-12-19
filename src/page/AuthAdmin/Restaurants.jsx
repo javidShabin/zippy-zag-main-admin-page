@@ -58,52 +58,58 @@ const Restaurants = () => {
   }
 
   return (
-    <main className="bg-white p-4 min-h-[100vh]">
-      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-5">
+    <main className="bg-gray-50 p-6 min-h-screen">
+      <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-6">
         Restaurants <span className="text-orange-500">List</span>
       </h1>
 
       <Link to={"/admin/create-restaurant"}>
-        <button className="bg-green-500 py-2 px-4 rounded-lg text-white font-bold shadow-xl mb-3 ">
+        <button className="bg-orange-500 py-2 px-8 rounded-lg text-white font-semibold shadow-md hover:bg-orange-600 transition duration-300 mb-6">
           Create Restaurant
         </button>
       </Link>
 
       {restData.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {restData.map((restaurant) => (
             <div
-              className="relative w-full h-[200px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
-              style={{
-                backgroundImage: `url(${
-                  restaurant.image || "/fallback-image.jpg"
-                })`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
               key={restaurant._id}
+              className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-[#0000004f] bg-opacity-40 pointer-events-none"></div>
-
-              {/* Content */}
-              <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
-                <h2 className="text-lg font-semibold">{restaurant.name}</h2>
-                <p className="text-sm">{restaurant.location}</p>
-                <p className="text-xs mt-2">{restaurant.description}</p>
-                <p className="text-xs mt-2">{restaurant._id}</p>
+              <div
+                className="relative w-full h-[150px]"
+                style={{
+                  backgroundImage: `url(${
+                    restaurant.image || "/fallback-image.jpg"
+                  })`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+                {/* Remove Button */}
+                <button
+                  className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-md z-20 transition duration-300"
+                  onClick={() =>
+                    removeRestaurant({ restaurantId: restaurant._id })
+                  }
+                  title="Remove Restaurant"
+                >
+                  <Trash2 size={20} />
+                </button>
               </div>
 
-              {/* Remove Button */}
-              <button
-                className="absolute top-2 right-2 bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full shadow-md z-20"
-                onClick={() =>
-                  removeRestaurant({ restaurantId: restaurant._id })
-                }
-                title="Remove Restaurant"
-              >
-                <Trash2 size={20} />
-              </button>
+              {/* Restaurant Info */}
+              <div className="p-4">
+                <h2 className="text-lg font-semibold text-gray-800">
+                  {restaurant.name}
+                </h2>
+                <p className="text-sm text-gray-600">{restaurant.location}</p>
+                <p className="text-xs text-gray-500 mt-2">
+                  {restaurant.description}
+                </p>
+                <p className="text-xs text-gray-500 mt-2">{restaurant._id}</p>
+              </div>
             </div>
           ))}
         </div>
