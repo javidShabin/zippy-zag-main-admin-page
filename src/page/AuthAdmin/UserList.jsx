@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
+import { Trash } from "lucide-react";
 
 const UsersList = () => {
   const [userList, setUserList] = useState([]);
