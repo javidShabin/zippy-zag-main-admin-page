@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../config/axiosInstance';
 import { useForm } from 'react-hook-form'; // Import useForm from react-hook-form
 import { Send } from 'lucide-react'; // Import the send icon from Lucide
+import toast from 'react-hot-toast';
 
 const RequestDetails = () => {
   const { requestId } = useParams(); // Extract 'requestId' from URL
@@ -55,9 +56,10 @@ console.log(email)
     try {
       // Include the email in the form data
       const response = await axiosInstance.post('/request/send-join-link', { ...data, email }); 
-      console.log(response, '== Form Data Submitted');
+      toast.success("The join link sended")
     } catch (error) {
       console.error('Error submitting form', error);
+      toast.error("Failed to send the link")
     }
   };
 
