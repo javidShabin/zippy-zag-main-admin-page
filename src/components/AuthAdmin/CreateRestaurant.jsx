@@ -20,7 +20,7 @@ const RestaurantForm = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     // Validate image size (max 2MB)
-    if (file && file.size > 2 * 1024 * 1024) {
+    if (file && file.size > 5 * 1024 * 1024) {
       
       return;
     }
