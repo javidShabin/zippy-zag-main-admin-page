@@ -9,13 +9,16 @@ const RequestDetails = () => {
   const [requestDetails, setRequestDetails] = useState(null);
   const [error, setError] = useState(null);
   const { register, handleSubmit, formState: { errors } } = useForm(); // useForm hooks
+  const [email, setEmail] = useState(null)
 
+console.log(email)
   useEffect(() => {
     const getDetailsRequest = async () => {
       try {
         const response = await axiosInstance.get(`/request/getRequestById/${requestId}`);
         console.log(response, "==response");
         setRequestDetails(response.data.request); // Save the response data in state
+        setEmail(response.data.request.email)
       } catch (error) {
         setError('Failed to fetch request details');
         console.error(error);
@@ -29,7 +32,7 @@ const RequestDetails = () => {
 
   const handleApprove = async () => {
     try {
-      const response = await axiosInstance.post(`/request/approveRequest/${requestId}`);
+      const response = await axiosInstance.put(`/update/status/${requestId}`, {status: "approved"});
       console.log(response, "==approve response");
     } catch (error) {
       console.error("Error approving request", error);
@@ -45,10 +48,13 @@ const RequestDetails = () => {
     }
   };
 
+
+
   // Handle form submission
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post('/request/sendRestaurantId', data); // Assuming this is the endpoint for your form submission
+      // Include the email in the form data
+      const response = await axiosInstance.post('/request/send-join-link', { ...data, email }); 
       console.log(response, '== Form Data Submitted');
     } catch (error) {
       console.error('Error submitting form', error);
