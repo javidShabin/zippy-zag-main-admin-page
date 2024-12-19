@@ -18,10 +18,10 @@ const RequestList = () => {
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Request List</h2>
-      <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border-collapse border border-gray-300">
+    <div className="p-2">
+      <h2 className="text-2xl font-semibold mb-4 text-center">Request List</h2>
+      <div className="overflow-y-auto flex justify-center">
+        <table className="w-[55rem] table-auto border-collapse border border-gray-300">
           <thead className="bg-purple-600 text-white">
             <tr>
               <th className="px-4 py-2 text-left font-medium">ID</th>
