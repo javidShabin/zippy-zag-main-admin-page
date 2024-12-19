@@ -11,7 +11,6 @@ const RestaurantForm = () => {
 
   const [image, setImage] = useState(null);
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -19,18 +18,16 @@ const RestaurantForm = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    // Validate image size (max 2MB)
+    // Validate image size (max 5MB)
     if (file && file.size > 5 * 1024 * 1024) {
-      
+      toast.error("Image size exceeds 5MB limit.");
       return;
     }
     setImage(file);
-    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const form = new FormData();
       form.append("name", formData.name);
@@ -44,17 +41,17 @@ const RestaurantForm = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      toast.success("Create restaurant")
-      
+      toast.success("Restaurant created successfully!");
       setFormData({ name: "", location: "", cuisine: "" });
       setImage(null);
     } catch (error) {
-      toast.error(error)
+      const errorMessage =
+        error.response?.data?.message || "An error occurred. Please try again.";
+      toast.error(errorMessage);
     }
   };
 
   return (
-    
     <div className="max-w-lg mx-auto p-4 border border-gray-300 rounded shadow">
       <h2 className="text-2xl font-bold mb-4">Create a Restaurant</h2>
       <form onSubmit={handleSubmit}>
