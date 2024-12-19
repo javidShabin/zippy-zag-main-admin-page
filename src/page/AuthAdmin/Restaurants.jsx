@@ -51,7 +51,7 @@ const Restaurants = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center bg-orange-50 items-center h-screen">
+      <div className="flex justify-center bg-[#0b0622] items-center h-screen">
         <span className="loading loading-dots loading-lg bg-orange-400"></span>
       </div>
     );
