@@ -21,38 +21,48 @@ const UsersList = () => {
   }, []);
 
   return (
-    <div className="p-4 bg-orange-50 min-h-screen">
-      <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
-        Users List
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {userList.map((user) => (
-          <div
-            key={user._id}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-200"
-          >
-            <div className="flex items-center space-x-4 mb-4">
-              <img
-                src={user.image}
-                alt={user.name || "User Image"}
-                className="w-16 h-16 rounded-full border border-gray-300"
-              />
-              <div>
-                <h2 className="text-lg font-bold text-gray-700">{user.name}</h2>
-                <p className="text-sm text-gray-500">{user.email}</p>
-              </div>
-            </div>
-            <p className="text-gray-600 mb-4">
-              <span className="font-medium text-gray-700">Phone:</span>{" "}
-              {user.phone}
-            </p>
-            <button className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition">
-              Edit
-            </button>
+    <div className="p-6 bg-gradient-to-r from-orange-50 via-orange-100 to-orange-200 min-h-screen">
+  <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+    Users List
+  </h1>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {userList.map((user) => (
+      <div
+        key={user._id}
+        className="relative bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
+      >
+        <div className="flex items-center space-x-4 mb-4">
+          <img
+            src={user.image}
+            alt={user.name || "User Image"}
+            className="w-20 h-20 rounded-full border-4 border-indigo-500"
+          />
+          <div>
+            <h2 className="text-lg font-bold text-gray-800">{user.name}</h2>
+            <p className="text-sm text-gray-500">{user.email}</p>
           </div>
-        ))}
+        </div>
+        <p className="text-gray-600 mb-4">
+          <span className="font-medium text-gray-800">Phone:</span>{" "}
+          {user.phone}
+        </p>
+        <button
+          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-bold rounded-lg shadow hover:from-indigo-500 hover:to-indigo-600 transition"
+          onClick={() => handleEdit(user)}
+        >
+          Edit
+        </button>
+        {/* Tooltip */}
+        <div className="absolute top-2 right-2 text-sm text-gray-500 hover:text-indigo-600 cursor-pointer">
+          <span className="tooltip-text hidden absolute -top-8 bg-gray-800 text-white px-2 py-1 rounded shadow-lg">
+            Click to edit user
+          </span>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 };
 
