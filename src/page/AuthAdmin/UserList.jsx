@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { Trash } from "lucide-react";
+import toast from "react-hot-toast";
 
 const UsersList = () => {
   const [userList, setUserList] = useState([]);
@@ -16,6 +17,16 @@ const UsersList = () => {
       console.error("Error fetching user list:", error);
     }
   };
+
+  const handleRemove = async ({userId}) => {
+    try {
+      await axiosInstance.delete(`/user/remove-user/${userId}`)
+      toast.success("Revode the user")
+    } catch (error) {
+      console.log(error)
+      toast.error("remove filed")
+    }
+  }
 
   useEffect(() => {
     getAllUsers();
@@ -46,7 +57,7 @@ const UsersList = () => {
           <p className="text-gray-600 mb-4">
             <span className="font-medium text-gray-800">Phone:</span> {user.phone}
           </p>
-          <button className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition">
+          <button onClick={()=>{handleRemove(user._id)}} className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition">
             <Trash className="w-5 h-5" />
             Delete
           </button>
