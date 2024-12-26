@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { axiosInstance } from '../config/axiosInstance';
-import Chat from '../components/AuthAdmin/Chat';
 import RequestList from '../components/AuthAdmin/RequestList';
 
 const Dashbord = () => {
@@ -58,7 +57,6 @@ const Dashbord = () => {
       </div>
     </div>
     <RequestList />
-    <Chat />
     </>
   );
 };
