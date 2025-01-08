@@ -39,7 +39,8 @@ const RequestDetails = () => {
 
   const handleApprove = async () => {
     try {
-      const response = await axiosInstance.put(`/update/status/${requestId}`, {
+      const response = await axiosInstance.put(`/request/update/status/`, {
+        requestId,
         status: "approved",
       });
       console.log(response, "==approve response");
