@@ -1,27 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { axiosInstance } from '../../config/axiosInstance';
-import { useForm } from 'react-hook-form'; // Import useForm from react-hook-form
-import { Send } from 'lucide-react'; // Import the send icon from Lucide
-import toast from 'react-hot-toast';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { axiosInstance } from "../../config/axiosInstance";
+import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
+import { Send } from "lucide-react"; // Import the send icon from Lucide
+import toast from "react-hot-toast";
 
 const RequestDetails = () => {
   const { requestId } = useParams(); // Extract 'requestId' from URL
   const [requestDetails, setRequestDetails] = useState(null);
   const [error, setError] = useState(null);
-  const { register, handleSubmit, formState: { errors } } = useForm(); // useForm hooks
-  const [email, setEmail] = useState(null)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm(); // useForm hooks
+  const [email, setEmail] = useState(null);
 
-console.log(email)
+  console.log(email);
   useEffect(() => {
     const getDetailsRequest = async () => {
       try {
-        const response = await axiosInstance.get(`/request/getRequestById/${requestId}`);
+        const response = await axiosInstance.get(
+          `/request/getRequestById/${requestId}`
+        );
         console.log(response, "==response");
         setRequestDetails(response.data.request); // Save the response data in state
-        setEmail(response.data.request.email)
+        setEmail(response.data.request.email);
       } catch (error) {
-        setError('Failed to fetch request details');
+        setError("Failed to fetch request details");
         console.error(error);
       }
     };
@@ -33,7 +39,9 @@ console.log(email)
 
   const handleApprove = async () => {
     try {
-      const response = await axiosInstance.put(`/update/status/${requestId}`, {status: "approved"});
+      const response = await axiosInstance.put(`/update/status/${requestId}`, {
+        status: "approved",
+      });
       console.log(response, "==approve response");
     } catch (error) {
       console.error("Error approving request", error);
@@ -42,24 +50,28 @@ console.log(email)
 
   const handleReject = async () => {
     try {
-      const response = await axiosInstance.post(`/request/rejectRequest/${requestId}`);
+      const response = await axiosInstance.put(`/request/update/status/`, {
+        requestId,
+        status: "rejected",
+      });
       console.log(response, "==reject response");
     } catch (error) {
       console.error("Error rejecting request", error);
     }
   };
 
-
-
   // Handle form submission
   const onSubmit = async (data) => {
     try {
       // Include the email in the form data
-      const response = await axiosInstance.post('/request/send-join-link', { ...data, email }); 
-      toast.success("The join link sended")
+      const response = await axiosInstance.post("/request/send-join-link", {
+        ...data,
+        email,
+      });
+      toast.success("The join link sended");
     } catch (error) {
-      console.error('Error submitting form', error);
-      toast.error("Failed to send the link")
+      console.error("Error submitting form", error);
+      toast.error("Failed to send the link");
     }
   };
 
@@ -73,11 +85,15 @@ console.log(email)
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">Request Details</h2>
+      <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">
+        Request Details
+      </h2>
       <div className="bg-white p-6 border border-gray-300 rounded-lg shadow-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <p className="text-lg font-medium text-gray-600">Restaurant Name:</p>
+            <p className="text-lg font-medium text-gray-600">
+              Restaurant Name:
+            </p>
             <p className="text-gray-800">{requestDetails.restaurantName}</p>
           </div>
           <div>
@@ -106,11 +122,15 @@ console.log(email)
           </div>
           <div>
             <p className="text-lg font-medium text-gray-600">Created At:</p>
-            <p className="text-gray-800">{new Date(requestDetails.createdAt).toLocaleString()}</p>
+            <p className="text-gray-800">
+              {new Date(requestDetails.createdAt).toLocaleString()}
+            </p>
           </div>
           <div>
             <p className="text-lg font-medium text-gray-600">Updated At:</p>
-            <p className="text-gray-800">{new Date(requestDetails.updatedAt).toLocaleString()}</p>
+            <p className="text-gray-800">
+              {new Date(requestDetails.updatedAt).toLocaleString()}
+            </p>
           </div>
         </div>
 
@@ -138,10 +158,16 @@ console.log(email)
             placeholder="Enter restaurant ID"
             id="restaurantId"
             type="text"
-            {...register('restaurantId', { required: 'Restaurant ID is required' })}
+            {...register("restaurantId", {
+              required: "Restaurant ID is required",
+            })}
             className="w-full sm:w-[500px] py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
-          {errors.restaurantId && <p className="text-red-500 text-sm">{errors.restaurantId.message}</p>}
+          {errors.restaurantId && (
+            <p className="text-red-500 text-sm">
+              {errors.restaurantId.message}
+            </p>
+          )}
 
           <button
             type="submit"
